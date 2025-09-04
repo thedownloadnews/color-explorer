@@ -1,0 +1,49 @@
+@import url(./fonts/forrest/forrest.css);
+
+:root {
+  --color-melanin: #2B1B1A;
+  --color-cream: #F8ECE0;
+  --color-rowhome: #A24033;
+  --color-broad: #D46C2E;
+  --color-sunflower: #E4AB3B;
+  --color-parkway: #83922F;
+  --color-denim: #204E4D;
+  --color-market: #3B84A1;
+  --color-twilight: #663560;
+  --color-morning: #C8526F;
+
+  font-size: 12px;;
+}
+
+html, body {
+  padding: 0px;
+  margin: 0px;
+  user-select: none;
+    /* standard syntax */
+    -webkit-user-select: none;
+    /* webkit (safari, chrome) browsers */
+    -moz-user-select: none;
+    /* mozilla browsers */
+    -khtml-user-select: none;
+    /* webkit (konqueror) browsers */
+    -ms-user-select: none;
+    /* IE10+ */
+}
+
+body {
+  color: var(--color-melanin);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0px;
+  overflow: hidden;
+}
+
+.fill-container {
+  width: 100%;
+  height: 100%;
+}
+
+[data-trigger] {
+  cursor: pointer;
+}

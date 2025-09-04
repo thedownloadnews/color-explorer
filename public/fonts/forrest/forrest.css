@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Forrest';
+  src: url('./forrest-bold.otf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Forrest';
+  src: url('./forrest-light.otf') format('truetype');
+  font-weight: normal;
+}

@@ -1,16 +1,73 @@
 ---
-
+import Icon from "../modules/icon.astro";
+import Logo from "../modules/logo.astro";
+import Social from "../modules/social.astro";
+import Web from "../modules/web.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Petrona:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div class="layout">
+      <section class="in-logo">
+        <Logo />
+      </section>
+
+      <section class="in-icon">
+        <Icon />
+      </section>
+
+      <section class="in-social">
+        <Social />
+      </section>
+
+      <section class="in-web">
+        <Web />
+      </section>
+    </div>
+  </body>
 </html>
+
+<style>
+  .layout {
+    display: grid;
+    position: absolute;
+    inset: 0px;
+
+    grid-template-areas:
+      "logo logo web web"
+      "icon social web web";
+
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .in-logo {
+    grid-area: logo;
+  }
+
+  .in-icon {
+    grid-area: icon;
+  }
+
+  .in-social {
+    grid-area: social;
+  }
+
+  .in-web {
+    grid-area: web;
+  }
+</style>

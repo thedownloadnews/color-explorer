@@ -1,0 +1,86 @@
+---
+import Icon from "../vector/icon.svg";
+import Receiver from "./receiver.astro";
+---
+
+<Receiver id="social" foreground="sunflower" accent="cream">
+  <div class="background fill-container">
+    <div class="post">
+      <div class="image fill-container">
+        <img class="fill-container" src="/images/b3f7488c2f2e2ccec280ab16a305026f0a4a17d2-4189x4249.jpg.avif" />
+      </div>
+      <div class="icon">
+        <Icon />
+      </div>
+      <div class="title-position" data-trigger="foreground">
+        <span class="title">How Freeway Turned A Health Crisis Into Investment In Philadelphia</span>
+      </div>
+    </div>
+  </div>
+</Receiver>
+
+<style>
+  .background {
+    background: #eee;
+    display: grid;
+    position: relative;
+  }
+
+  .post {
+    border-radius: 1rem;
+    aspect-ratio: 4/5;
+    width: 60%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+  }
+
+  .post img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .post .icon {
+    width: 30px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .post .icon svg {
+    max-width: 1005;
+  }
+
+  .post .title {
+    color: var(--color-cream);
+    font-family: "Forrest";
+
+    font-weight: bold;
+    letter-spacing: -0.08rem;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    bottom: 4rem;
+
+    padding: 0rem 0.5rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    display: block;
+    border-top: 3px solid var(--color-foreground);
+    text-align: right;
+  }
+
+  .post .title-position {
+    position: absolute;
+    bottom: 0px;
+    padding: 6rem 1rem 3rem 1rem;
+
+    background: linear-gradient(transparent, rgba(0,0,0,.7));
+  }
+
+  .post .image img {
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

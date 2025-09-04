@@ -1,0 +1,116 @@
+---
+import Masthead from "../vector/masthead.svg";
+import Endmark from "../vector/icon.svg";
+import Receiver from "./receiver.astro";
+---
+
+<Receiver id="web" accent="denim" foreground="melanin">
+  <div class="text stack">
+    <div class="masthead">
+      <Masthead />
+      <div class="button text-label" data-trigger="accent">Subscribe</div>
+    </div>
+    <div>
+      <p class="eyebrow text-label" data-trigger="accent">Community</p>
+      <h1>How Freeway Turned A Health Crisis Into Investment In Philadelphia</h1>
+    </div>
+    <p class="dek">“You come for the music, you leave with a health checkup or information about a program that could change your life.”</p>
+
+    <img src="/images/b3f7488c2f2e2ccec280ab16a305026f0a4a17d2-4189x4249.jpg.avif" />
+
+    <p class="content">
+      When Freeway took the stage at the Philadelphia Eagles’ Super Bowl Ring Ceremony last month, it reminded the city why his voice will always be part of
+      Philly’s soundtrack. But with Free Fest, the annual event that draws hundreds for a day of free health services, education resources, and community
+      connection, Freeway showed that, beyond the music, he is invested in his hometown. <Endmark />
+    </p>
+  </div>
+
+  <style>
+    .text {
+      max-width: 600px;
+      margin-inline: auto;
+      padding-top: 60px;
+    }
+
+    h1,
+    p {
+      margin: 0px;
+    }
+
+    h1 {
+      font-family: "Forrest";
+      letter-spacing: -0.08em;
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    p.eyebrow {
+      color: var(--color-accent);
+    }
+
+    p.dek {
+      font-family: "Forrest";
+      font-size: 2rem;
+      font-weight: normal;
+      line-height: 1.4;
+    }
+
+    img {
+      max-width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    p.content {
+      font-family: "Petrona";
+      font-size: 1.7rem;
+      line-height: 1.6;
+    }
+
+    p.content::first-letter {
+      color: var(--color-accent);
+      float: left;
+      font-size: 8rem;
+      font-weight: bold;
+      font-family: "Forrest";
+
+      line-height: 0.6;
+      margin-right: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p.content svg {
+      display: inline-block;
+      max-width: 2rem;
+    }
+
+    .stack > * + * {
+      margin-top: 2rem;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .button {
+      background: var(--color-accent);
+      color: white;
+      border-radius: .5rem;
+      padding: 1rem;
+    }
+
+    .text-label {
+      font-family: "Figtree";
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1;
+      font-size: 1.3rem;
+    }
+
+    .masthead svg {
+      max-width: 200px;
+    }
+  </style>
+</Receiver>

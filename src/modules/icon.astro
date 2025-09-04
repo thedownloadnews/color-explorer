@@ -1,0 +1,33 @@
+---
+import Icon from "../vector/icon.svg";
+import Receiver from "./receiver.astro";
+---
+
+<Receiver id="icon">
+  <div class="background fill-container">
+    <div class="tdn-icon" data-trigger="background">
+      <Icon />
+    </div>
+  </div>
+</Receiver>
+
+<style>
+  .background {
+    background: #111;
+    display: grid;
+    place-items: center;
+  }
+
+  .tdn-icon {
+    background: var(--color-background);
+    border-radius: 30px;
+    max-width: 50%;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+  }
+
+  .tdn-icon > * {
+    max-width: 60%;
+  }
+</style>

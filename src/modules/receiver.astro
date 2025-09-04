@@ -1,0 +1,42 @@
+---
+const { id, background="melanin", foreground="cream", accent="sunflower" } = Astro.props;
+---
+
+<div id={id} class="receiver" data-receiver={id} data-background={background} data-foreground={foreground} data-accent={accent}>
+  <slot />
+</div>
+
+<style>
+  .receiver {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  const colors = ["rowhome", "broad", "sunflower", "parkway", "denim", "market", "twilight", "morning", "melanin", "cream"];
+
+  function updateReceiverColors(receiver) {
+    const { background, foreground, accent } = receiver.dataset;
+    receiver.style.setProperty("--color-background", `var(--color-${background})`);
+    receiver.style.setProperty("--color-foreground", `var(--color-${foreground})`);
+    receiver.style.setProperty("--color-accent", `var(--color-${accent})`);
+  }
+
+  document.querySelectorAll("[data-receiver]").forEach(updateReceiverColors);
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target?.closest("[data-trigger]");
+    if (!trigger) return;
+
+    const receiver = trigger.closest("[data-receiver]");
+    const property = trigger.dataset.trigger;
+    const currentColor = receiver.dataset[property];
+    const currentIndex = colors.indexOf(currentColor);
+    const nextIndex = (currentIndex + 1) % colors.length;
+    const nextColor = colors[nextIndex];
+
+    receiver?.setAttribute(`data-${property}`, nextColor);
+    updateReceiverColors(receiver);
+  });
+</script>
