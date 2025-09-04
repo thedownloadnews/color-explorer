@@ -1,5 +1,5 @@
 ---
-const { id, background="melanin", foreground="cream", accent="sunflower" } = Astro.props;
+const { id, background = "melanin", foreground = "cream", accent = "sunflower" } = Astro.props;
 ---
 
 <div id={id} class="receiver" data-receiver={id} data-background={background} data-foreground={foreground} data-accent={accent}>
@@ -14,29 +14,36 @@ const { id, background="melanin", foreground="cream", accent="sunflower" } = Ast
 </style>
 
 <script>
+  import { persistentMap } from "@nanostores/persistent";
+
   const colors = ["rowhome", "broad", "sunflower", "parkway", "denim", "market", "twilight", "morning", "melanin", "cream"];
 
-  function updateReceiverColors(receiver) {
+  function init(receiver) {
     const { background, foreground, accent } = receiver.dataset;
-    receiver.style.setProperty("--color-background", `var(--color-${background})`);
-    receiver.style.setProperty("--color-foreground", `var(--color-${foreground})`);
-    receiver.style.setProperty("--color-accent", `var(--color-${accent})`);
+    const store = persistentMap( receiver.id, { background, foreground, accent });
+
+    store.subscribe((colors) => {
+      Object.entries(colors).forEach(([key, color]) => {
+        receiver.setAttribute(`data-${key}`, color);
+        receiver.style.setProperty(`--color-${key}`, `var(--color-${color})`);
+      });
+    });
+
+    receiver.addEventListener("click", (event) => {
+      const trigger = event.target?.closest("[data-trigger]");
+      if (!trigger) return;
+
+      const receiver = trigger.closest("[data-receiver]");
+      const property = trigger.dataset.trigger;
+      const currentColor = receiver.dataset[property];
+      const currentIndex = colors.indexOf(currentColor);
+      const nextIndex = (currentIndex + 1) % colors.length;
+      const nextColor = colors[nextIndex];
+
+      receiver?.setAttribute(`data-${property}`, nextColor);
+      store.setKey(property, nextColor);
+    });
   }
 
-  document.querySelectorAll("[data-receiver]").forEach(updateReceiverColors);
-
-  document.addEventListener("click", (event) => {
-    const trigger = event.target?.closest("[data-trigger]");
-    if (!trigger) return;
-
-    const receiver = trigger.closest("[data-receiver]");
-    const property = trigger.dataset.trigger;
-    const currentColor = receiver.dataset[property];
-    const currentIndex = colors.indexOf(currentColor);
-    const nextIndex = (currentIndex + 1) % colors.length;
-    const nextColor = colors[nextIndex];
-
-    receiver?.setAttribute(`data-${property}`, nextColor);
-    updateReceiverColors(receiver);
-  });
+  document.querySelectorAll("[data-receiver]").forEach(init);
 </script>
